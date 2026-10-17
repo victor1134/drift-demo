@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drift-demo
+  labels:
+    app: drift-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: drift-demo
+  template:
+    metadata:
+      labels:
+        app: drift-demo
+    spec:
+      containers:
+        - name: guestbook
+          image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+          ports:
+            - containerPort: 80
